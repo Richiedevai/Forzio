@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-10 h-10 rounded-lg overflow-hidden bg-transparent flex items-center justify-center">
                 <img 
-                  src="/YOvA (2).gif" 
+                  src="/YOvA (3).gif" 
                   alt="YovaOS Logo" 
                   className="w-10 h-10 object-contain"
                 />
