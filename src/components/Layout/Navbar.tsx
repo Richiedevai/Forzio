@@ -26,11 +26,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
             className="flex items-center space-x-3 cursor-pointer"
             onClick={() => onNavigate('landing')}
           >
-            <div className="w-10 h-10 rounded-lg overflow-hidden bg-black flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg overflow-hidden bg-transparent flex items-center justify-center">
               <img 
-                src="/YOvA.gif" 
-                alt="YOvA Logo" 
-                className="w-8 h-8 object-contain"
+                src="/YOvA (2).gif" 
+                alt="YovaOS Logo" 
+                className="w-10 h-10 object-contain"
               />
             </div>
             <div>

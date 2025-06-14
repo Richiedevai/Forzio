@@ -13,11 +13,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 rounded-lg overflow-hidden bg-black flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg overflow-hidden bg-transparent flex items-center justify-center">
                 <img 
-                  src="/YOvA.gif" 
-                  alt="YOvA Logo" 
-                  className="w-8 h-8 object-contain"
+                  src="/YOvA (2).gif" 
+                  alt="YovaOS Logo" 
+                  className="w-10 h-10 object-contain"
                 />
               </div>
               <div>
