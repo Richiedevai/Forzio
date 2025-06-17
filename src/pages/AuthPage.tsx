@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Navbar } from '../components/Layout/Navbar';
 import { useAuth } from '../contexts/AuthContext';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight } from 'lucide-react';
+import { useToast } from '../hooks/useToast';
 
 interface AuthPageProps {
   onNavigate: (page: string) => void;
-  onAuth: (isAuthenticated: boolean) => void;
 }
 
-export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate, onAuth }) => {
+export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -19,28 +19,51 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate, onAuth }) => {
   const [error, setError] = useState('');
 
   const { login, signup, isLoading } = useAuth();
+  const { addToast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+
+    if (!formData.email || !formData.password) {
+      setError('Please fill in all required fields.');
+      return;
+    }
+
+    if (!isLogin && !formData.name) {
+      setError('Please enter your name.');
+      return;
+    }
 
     try {
       let success = false;
       
       if (isLogin) {
         success = await login(formData.email, formData.password);
+        if (success) {
+          addToast({
+            message: 'Welcome back! Redirecting to dashboard...',
+            type: 'success'
+          });
+          setTimeout(() => onNavigate('dashboard'), 1000);
+        } else {
+          setError('Invalid email or password. Please try again.');
+        }
       } else {
         success = await signup(formData.email, formData.password, formData.name);
-      }
-
-      if (success) {
-        onAuth(true);
-        onNavigate('dashboard');
-      } else {
-        setError('Authentication failed. Please try again.');
+        if (success) {
+          addToast({
+            message: 'Account created successfully! Please check your email to verify your account.',
+            type: 'success'
+          });
+          setTimeout(() => onNavigate('dashboard'), 1000);
+        } else {
+          setError('Failed to create account. Please try again.');
+        }
       }
     } catch (err) {
-      setError('An error occurred. Please try again.');
+      console.error('Auth error:', err);
+      setError('An unexpected error occurred. Please try again.');
     }
   };
 
@@ -49,6 +72,8 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate, onAuth }) => {
       ...formData,
       [e.target.name]: e.target.value
     });
+    // Clear error when user starts typing
+    if (error) setError('');
   };
 
   return (
@@ -126,6 +151,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate, onAuth }) => {
                     className="w-full pl-10 pr-12 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
                     placeholder="Enter your password"
                     required
+                    minLength={6}
                   />
                   <button
                     type="button"
@@ -135,6 +161,11 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate, onAuth }) => {
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
+                {!isLogin && (
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    Password must be at least 6 characters long
+                  </p>
+                )}
               </div>
 
               {error && (
@@ -163,7 +194,11 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate, onAuth }) => {
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 {isLogin ? "Don't have an account?" : "Already have an account?"}
                 <button
-                  onClick={() => setIsLogin(!isLogin)}
+                  onClick={() => {
+                    setIsLogin(!isLogin);
+                    setError('');
+                    setFormData({ email: '', password: '', name: '' });
+                  }}
                   className="ml-1 text-primary-500 hover:text-primary-600 font-medium"
                 >
                   {isLogin ? 'Sign up' : 'Sign in'}

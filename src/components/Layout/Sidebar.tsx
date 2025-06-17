@@ -11,8 +11,10 @@ import {
   Bot,
   Mail,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  LogOut
 } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
 
 interface SidebarProps {
   currentPage: string;
@@ -34,6 +36,12 @@ const menuItems = [
 
 export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onPageChange }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const { user, logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+    // The auth context will handle redirecting to landing page
+  };
 
   return (
     <div className={`${isCollapsed ? 'w-16' : 'w-64'} bg-white dark:bg-dark-card border-r border-gray-200 dark:border-gray-800 transition-all duration-300 flex flex-col`}>
@@ -97,16 +105,31 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onPageChange }) =
       </nav>
 
       {/* Footer */}
-      {!isCollapsed && (
+      {!isCollapsed && user && (
         <div className="p-4 border-t border-gray-200 dark:border-gray-800">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full flex items-center justify-center">
-              <span className="text-sm font-medium text-white">F</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3 flex-1 min-w-0">
+              <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full flex items-center justify-center">
+                <span className="text-sm font-medium text-white">
+                  {user.name.charAt(0).toUpperCase()}
+                </span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                  {user.name}
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                  {user.email}
+                </p>
+              </div>
             </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-gray-900 dark:text-white truncate">Founder</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 truncate">CEO & Founder</p>
-            </div>
+            <button
+              onClick={handleLogout}
+              className="p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+              title="Sign out"
+            >
+              <LogOut className="w-4 h-4" />
+            </button>
           </div>
         </div>
       )}
