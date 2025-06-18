@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.4;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #0D0D10;
+    color: #FFFFFF;
+  }
+}
+
+@layer components {
+  .glow-effect {
+    filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.6));
+  }
+  
+  .sparkline {
+    height: 32px;
+  }
+  
+  .status-badge {
+    @apply px-2 py-1 text-xs font-medium rounded-full;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+  }
+}

@@ -16,27 +16,27 @@ export const MetricCard: React.FC<MetricCardProps> = ({
   change,
   changeType = 'neutral',
   icon: Icon,
-  iconColor = 'text-primary-500'
+  iconColor = 'text-accent-violet'
 }) => {
   const changeColors = {
-    positive: 'text-success',
-    negative: 'text-danger',
-    neutral: 'text-gray-500 dark:text-gray-400'
+    positive: 'text-accent-green',
+    negative: 'text-accent-red',
+    neutral: 'text-text-secondary'
   };
 
   return (
-    <div className="bg-white dark:bg-dark-card rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 dark:border-gray-800 hover:scale-105">
+    <div className="bg-card-bg rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-200 border border-border-color hover:scale-105 group">
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">{title}</p>
-          <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{value}</p>
+          <p className="text-sm font-medium text-text-secondary mb-2">{title}</p>
+          <p className="text-2xl font-bold text-text-primary mb-2">{value}</p>
           {change && (
             <p className={`text-sm font-medium ${changeColors[changeType]}`}>
               {change}
             </p>
           )}
         </div>
-        <div className={`p-3 rounded-xl bg-gray-50 dark:bg-gray-800 ${iconColor}`}>
+        <div className={`p-3 rounded-xl bg-sidebar-bg ${iconColor} group-hover:shadow-glow-violet transition-all duration-200`}>
           <Icon className="w-6 h-6" />
         </div>
       </div>
