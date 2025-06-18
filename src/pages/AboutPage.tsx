@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar } from '../components/Layout/Navbar';
 import { Footer } from '../components/Layout/Footer';
-import { Target, Users, Lightbulb, Award } from 'lucide-react';
+import { Target, Users, Lightbulb, Award, Brain, Rocket, Zap } from 'lucide-react';
 
 interface AboutPageProps {
   onNavigate: (page: string) => void;
@@ -10,115 +10,114 @@ interface AboutPageProps {
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   const values = [
     {
-      icon: Target,
-      title: "Mission-Driven",
-      description: "We're on a mission to democratize business automation and make powerful tools accessible to every founder."
+      icon: Brain,
+      title: "AI-First Approach",
+      description: "We believe AI should be every founder's co-founder, handling operations while you focus on vision and growth."
     },
     {
       icon: Users,
-      title: "Founder-First",
-      description: "Built by founders, for founders. We understand the unique challenges of building and scaling a business."
+      title: "Founder-Obsessed",
+      description: "Built by founders, for founders. We understand the unique challenges of building and scaling a startup."
     },
     {
-      icon: Lightbulb,
-      title: "Innovation",
-      description: "We're constantly pushing the boundaries of what's possible with AI and automation technology."
+      icon: Rocket,
+      title: "Scale-Ready",
+      description: "From MVP to IPO, Forzio grows with your startup, adapting to your changing needs at every stage."
     },
     {
-      icon: Award,
-      title: "Excellence",
-      description: "We're committed to delivering exceptional products and experiences that exceed expectations."
+      icon: Zap,
+      title: "Automation Excellence",
+      description: "We're committed to delivering the most intelligent and reliable automation platform for modern startups."
     }
   ];
 
   const timeline = [
     {
       year: "2023",
-      title: "The Idea",
-      description: "Founded by a team of serial entrepreneurs who experienced the pain of managing multiple tools and processes."
+      title: "The Vision",
+      description: "Founded by serial entrepreneurs who experienced the pain of juggling operations while trying to scale."
     },
     {
       year: "2024",
-      title: "First Product",
-      description: "Launched our MVP with basic automation features and gained our first 1,000 users."
+      title: "AI Co-founder Born",
+      description: "Launched our first AI agents and gained our first 1,000 founder users who saw immediate productivity gains."
     },
     {
       year: "2024",
-      title: "AI Integration",
-      description: "Integrated advanced AI capabilities and launched our intelligent agent system."
+      title: "Intelligence Breakthrough",
+      description: "Integrated advanced AI capabilities that can truly understand and predict startup needs."
     },
     {
       year: "2025",
-      title: "Scale & Growth",
-      description: "Serving 10,000+ founders worldwide with comprehensive business automation platform."
+      title: "Scale & Impact",
+      description: "Serving 10,000+ founders worldwide, becoming the default AI co-founder for ambitious startups."
     }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-public-bg">
       <Navbar onNavigate={onNavigate} currentPage="about" />
       
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-public-text mb-6">
             Building the future of
             <br />
-            <span className="bg-gradient-to-r from-primary-500 to-accent-500 bg-clip-text text-transparent">
-              business automation
+            <span className="bg-gradient-electric bg-clip-text text-transparent">
+              startup operations
             </span>
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            YovaOS was born from the frustration of juggling dozens of tools and processes 
-            while trying to build and scale a business. We believe every founder deserves 
-            access to enterprise-level automation and insights.
+          <p className="text-xl text-public-text/70 mb-8">
+            Forzio was born from the frustration of brilliant founders getting bogged down 
+            in operations instead of building the future. We believe every founder deserves 
+            an AI co-founder that handles the grind.
           </p>
         </div>
       </section>
 
       {/* Story Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-public-border/20 to-transparent">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-3xl font-bold text-public-text mb-6">
                 Our Story
               </h2>
-              <div className="space-y-4 text-gray-600 dark:text-gray-300">
+              <div className="space-y-4 text-public-text/70">
                 <p>
                   As serial entrepreneurs, we've built and scaled multiple companies. Each time, 
-                  we found ourselves drowning in a sea of disconnected tools, manual processes, 
-                  and repetitive tasks that pulled us away from what really mattered: building 
-                  great products and serving customers.
+                  we found ourselves drowning in operational tasks that pulled us away from 
+                  what really mattered: building great products and serving customers.
                 </p>
                 <p>
-                  We tried every productivity tool, automation platform, and business intelligence 
-                  solution on the market. Nothing was built specifically for the unique needs of 
-                  founders and early-stage companies.
+                  We tried every productivity tool and automation platform on the market. 
+                  Nothing was built specifically for the unique chaos and rapid evolution 
+                  of startup life.
                 </p>
                 <p>
-                  That's when we decided to build YovaOS - the operating system we wished we had 
-                  when we were starting our first companies. A platform that understands the 
-                  founder journey and grows with your business.
+                  That's when we decided to build Forzio - the AI co-founder we wished we had 
+                  when we were starting our first companies. An AI that understands the founder 
+                  journey and evolves with your startup.
                 </p>
               </div>
             </div>
-            <div className="bg-white dark:bg-dark-card rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-800">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                Our Vision
+            <div className="bg-gradient-to-br from-public-border/50 to-transparent border border-public-border rounded-2xl p-8 shadow-neon-blue">
+              <h3 className="text-xl font-semibold text-public-text mb-4">
+                Our Mission
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
-                To become the default operating system for every founder, providing the tools, 
-                insights, and automation needed to build successful businesses.
+              <p className="text-public-text/70 mb-6">
+                To become the default AI co-founder for every ambitious startup, 
+                handling operations so founders can focus on changing the world.
               </p>
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div>
-                  <div className="text-2xl font-bold text-primary-500">10K+</div>
-                  <div className="text-sm text-gray-500">Active Founders</div>
+                  <div className="text-2xl font-bold bg-gradient-electric bg-clip-text text-transparent">10K+</div>
+                  <div className="text-sm text-public-text/60">Active Founders</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-primary-500">50+</div>
-                  <div className="text-sm text-gray-500">Countries</div>
+                  <div className="text-2xl font-bold bg-gradient-electric bg-clip-text text-transparent">50+</div>
+                  <div className="text-sm text-public-text/60">Countries</div>
                 </div>
               </div>
             </div>
@@ -130,26 +129,26 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-public-text mb-4">
               Our Values
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
-              The principles that guide everything we do
+            <p className="text-xl text-public-text/70">
+              The principles that guide everything we build
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="bg-white dark:bg-dark-card rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+              <div key={index} className="bg-gradient-to-br from-public-border/50 to-transparent border border-public-border rounded-2xl p-6 hover:shadow-neon-blue transition-all duration-300">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="p-3 bg-primary-100 dark:bg-primary-900/20 rounded-xl">
-                    <value.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                  <div className="p-3 bg-gradient-electric rounded-xl shadow-neon-blue">
+                    <value.icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-xl font-semibold text-public-text">
                     {value.title}
                   </h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-public-text/70">
                   {value.description}
                 </p>
               </div>
@@ -159,28 +158,28 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-electric-blue/5 to-violet-indigo/5">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-public-text mb-4">
               Our Journey
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
-              From idea to platform serving thousands of founders
+            <p className="text-xl text-public-text/70">
+              From idea to AI co-founder serving thousands of founders
             </p>
           </div>
           
           <div className="space-y-8">
             {timeline.map((item, index) => (
               <div key={index} className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full flex items-center justify-center">
+                <div className="flex-shrink-0 w-16 h-16 bg-gradient-electric rounded-full flex items-center justify-center shadow-neon-blue">
                   <span className="text-white font-bold">{item.year}</span>
                 </div>
-                <div className="flex-1 bg-white dark:bg-dark-card rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                <div className="flex-1 bg-gradient-to-br from-public-border/50 to-transparent border border-public-border rounded-xl p-6 hover:shadow-neon-blue transition-all duration-300">
+                  <h3 className="text-xl font-semibold text-public-text mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
+                  <p className="text-public-text/70">
                     {item.description}
                   </p>
                 </div>

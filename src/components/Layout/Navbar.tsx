@@ -25,24 +25,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark-card/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-public-bg/80 backdrop-blur-md border-b border-public-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div 
-            className="flex items-center space-x-3 cursor-pointer"
+            className="flex items-center space-x-3 cursor-pointer group"
             onClick={() => onNavigate('landing')}
           >
-            <div className="w-10 h-10 rounded-lg overflow-hidden bg-transparent flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg overflow-hidden bg-gradient-electric flex items-center justify-center group-hover:shadow-neon-blue transition-all duration-200">
               <img 
                 src="/YOvA (3).gif" 
-                alt="YovaOS Logo" 
-                className="w-10 h-10 object-contain"
+                alt="Forzio Logo" 
+                className="w-8 h-8 object-contain"
               />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900 dark:text-white">YovaOS</h1>
-              <p className="text-xs text-gray-500 dark:text-gray-400">by Yova</p>
+              <h1 className="text-xl font-bold bg-gradient-electric bg-clip-text text-transparent">Forzio</h1>
+              <p className="text-xs text-public-text/60">Your AI Co-founder</p>
             </div>
           </div>
 
@@ -52,10 +52,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-sm font-medium transition-colors hover:text-electric-blue ${
                   currentPage === item.id
-                    ? 'text-primary-500'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-primary-500'
+                    ? 'text-electric-blue'
+                    : 'text-public-text/80'
                 }`}
               >
                 {item.label}
@@ -67,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
           <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all"
+              className="p-2 text-public-text/60 hover:text-public-text hover:bg-public-border/50 rounded-lg transition-all"
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
@@ -75,26 +75,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
             {user ? (
               <div className="flex items-center space-x-3">
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-gradient-electric rounded-full flex items-center justify-center">
                     <span className="text-sm font-medium text-white">
                       {user.name.charAt(0).toUpperCase()}
                     </span>
                   </div>
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <span className="text-sm font-medium text-public-text">
                     {user.name}
                   </span>
                 </div>
                 
                 <button
                   onClick={() => onNavigate('dashboard')}
-                  className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:shadow-lg transition-all"
+                  className="px-4 py-2 text-sm font-medium bg-gradient-electric text-white rounded-lg hover:shadow-neon-blue transition-all duration-200 hover:scale-105"
                 >
                   Dashboard
                 </button>
                 
                 <button
                   onClick={handleLogout}
-                  className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all"
+                  className="p-2 text-public-text/60 hover:text-public-text hover:bg-public-border/50 rounded-lg transition-all"
                   title="Sign out"
                 >
                   <LogOut className="w-4 h-4" />
@@ -104,14 +104,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
               <>
                 <button
                   onClick={() => onNavigate('auth')}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all"
+                  className="px-4 py-2 text-sm font-medium text-public-text/80 hover:text-public-text hover:bg-public-border/50 rounded-lg transition-all"
                 >
                   Sign In
                 </button>
                 
                 <button
                   onClick={() => onNavigate('auth')}
-                  className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:shadow-lg transition-all"
+                  className="px-4 py-2 text-sm font-medium bg-gradient-electric text-white rounded-lg hover:shadow-neon-blue transition-all duration-200 hover:scale-105"
                 >
                   Get Started
                 </button>
@@ -123,14 +123,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
           <div className="md:hidden flex items-center space-x-2">
             <button
               onClick={toggleTheme}
-              className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg"
+              className="p-2 text-public-text/60 hover:text-public-text rounded-lg"
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
             
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg"
+              className="p-2 text-public-text/60 hover:text-public-text rounded-lg"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -139,7 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="md:hidden py-4 border-t border-public-border">
             <div className="flex flex-col space-y-3">
               {navItems.map((item) => (
                 <button
@@ -150,24 +150,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                   }}
                   className={`text-left px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                     currentPage === item.id
-                      ? 'text-primary-500 bg-primary-50 dark:bg-primary-900/20'
-                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                      ? 'text-electric-blue bg-electric-blue/10'
+                      : 'text-public-text/80 hover:bg-public-border/50'
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
               
-              <div className="pt-3 border-t border-gray-200 dark:border-gray-700">
+              <div className="pt-3 border-t border-public-border">
                 {user ? (
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2 px-3 py-2">
-                      <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full flex items-center justify-center">
+                      <div className="w-8 h-8 bg-gradient-electric rounded-full flex items-center justify-center">
                         <span className="text-sm font-medium text-white">
                           {user.name.charAt(0).toUpperCase()}
                         </span>
                       </div>
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      <span className="text-sm font-medium text-public-text">
                         {user.name}
                       </span>
                     </div>
@@ -177,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                         onNavigate('dashboard');
                         setIsMenuOpen(false);
                       }}
-                      className="w-full text-left px-3 py-2 text-sm font-medium bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg"
+                      className="w-full text-left px-3 py-2 text-sm font-medium bg-gradient-electric text-white rounded-lg"
                     >
                       Dashboard
                     </button>
@@ -187,7 +187,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                         handleLogout();
                         setIsMenuOpen(false);
                       }}
-                      className="w-full text-left px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
+                      className="w-full text-left px-3 py-2 text-sm font-medium text-public-text/80 hover:bg-public-border/50 rounded-lg"
                     >
                       Sign Out
                     </button>
@@ -199,7 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                         onNavigate('auth');
                         setIsMenuOpen(false);
                       }}
-                      className="w-full text-left px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
+                      className="w-full text-left px-3 py-2 text-sm font-medium text-public-text/80 hover:bg-public-border/50 rounded-lg"
                     >
                       Sign In
                     </button>
@@ -209,7 +209,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                         onNavigate('auth');
                         setIsMenuOpen(false);
                       }}
-                      className="w-full text-left px-3 py-2 mt-2 text-sm font-medium bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg"
+                      className="w-full text-left px-3 py-2 mt-2 text-sm font-medium bg-gradient-electric text-white rounded-lg"
                     >
                       Get Started
                     </button>

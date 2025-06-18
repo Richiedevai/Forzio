@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar } from '../components/Layout/Navbar';
 import { Footer } from '../components/Layout/Footer';
-import { Mail, Phone, MapPin, Send, MessageSquare, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageSquare, Clock, Brain } from 'lucide-react';
 
 interface ContactPageProps {
   onNavigate: (page: string) => void;
@@ -46,56 +46,59 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
       icon: Mail,
       title: "Email Us",
       description: "Get in touch via email",
-      value: "hello@yovaos.com",
-      action: "mailto:hello@yovaos.com"
+      value: "hello@forzio.com",
+      action: "mailto:hello@forzio.com"
     },
     {
       icon: MessageSquare,
       title: "Live Chat",
-      description: "Chat with our team",
+      description: "Chat with our AI",
       value: "Available 24/7",
       action: "#"
     },
     {
       icon: Phone,
-      title: "Call Us",
-      description: "Speak with our sales team",
-      value: "+1 (555) 123-4567",
+      title: "Book Demo",
+      description: "Schedule a call",
+      value: "30-min demo",
       action: "tel:+15551234567"
     }
   ];
 
   const faqs = [
     {
-      question: "How does YovaOS pricing work?",
-      answer: "We offer flexible pricing plans starting from $29/month for startups, with enterprise plans available for larger organizations."
+      question: "How does Forzio pricing work?",
+      answer: "We're currently in beta with free access for early founders. Paid plans will start at $99/month for growing startups."
     },
     {
-      question: "Can I integrate YovaOS with my existing tools?",
-      answer: "Yes! YovaOS integrates with 100+ popular business tools including Slack, Gmail, Stripe, and more."
+      question: "Can Forzio integrate with my existing tools?",
+      answer: "Yes! Forzio connects with 100+ popular startup tools including Slack, Gmail, Stripe, Notion, and more."
     },
     {
       question: "Is there a free trial available?",
-      answer: "Absolutely! We offer a 14-day free trial with full access to all features. No credit card required."
+      answer: "Absolutely! We offer free beta access with full AI co-founder capabilities. No credit card required."
     },
     {
-      question: "How secure is my data?",
+      question: "How secure is my startup data?",
       answer: "We use enterprise-grade security with end-to-end encryption, SOC 2 compliance, and regular security audits."
     }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-public-bg">
       <Navbar onNavigate={onNavigate} currentPage="contact" />
       
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Get in touch
+          <div className="w-16 h-16 bg-gradient-electric rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-neon-blue">
+            <Brain className="w-8 h-8 text-white" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-public-text mb-6">
+            Let's build together
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            Have questions about YovaOS? We're here to help you succeed.
+          <p className="text-xl text-public-text/70 mb-8">
+            Ready to meet your AI co-founder? We're here to help you scale faster.
           </p>
         </div>
       </section>
@@ -105,19 +108,19 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {contactInfo.map((info, index) => (
-              <div key={index} className="bg-white dark:bg-dark-card rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 text-center hover:shadow-lg transition-all">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-xl mb-4">
-                  <info.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+              <div key={index} className="bg-gradient-to-br from-public-border/50 to-transparent border border-public-border rounded-2xl p-6 text-center hover:shadow-neon-blue transition-all duration-300 hover:scale-105">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-electric rounded-xl mb-4 shadow-neon-blue">
+                  <info.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                <h3 className="text-lg font-semibold text-public-text mb-2">
                   {info.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-3">
+                <p className="text-public-text/60 mb-3">
                   {info.description}
                 </p>
                 <a
                   href={info.action}
-                  className="text-primary-500 hover:text-primary-600 font-medium"
+                  className="text-electric-blue hover:text-violet-indigo font-medium"
                 >
                   {info.value}
                 </a>
@@ -128,19 +131,19 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
           {/* Contact Form */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-2xl font-bold text-public-text mb-6">
                 Send us a message
               </h2>
               
               {isSubmitted ? (
-                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-6 text-center">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Send className="w-6 h-6 text-green-600 dark:text-green-400" />
+                <div className="bg-emerald-green/10 border border-emerald-green/30 rounded-xl p-6 text-center">
+                  <div className="w-12 h-12 bg-emerald-green/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Send className="w-6 h-6 text-emerald-green" />
                   </div>
-                  <h3 className="text-lg font-semibold text-green-800 dark:text-green-200 mb-2">
+                  <h3 className="text-lg font-semibold text-emerald-green mb-2">
                     Message sent successfully!
                   </h3>
-                  <p className="text-green-600 dark:text-green-300">
+                  <p className="text-emerald-green/80">
                     We'll get back to you within 24 hours.
                   </p>
                 </div>
@@ -148,7 +151,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-public-text/80 mb-2">
                         Name *
                       </label>
                       <input
@@ -157,12 +160,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                        className="w-full px-4 py-3 border border-public-border rounded-xl bg-public-bg/50 text-public-text placeholder-public-text/50 focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
                         required
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-public-text/80 mb-2">
                         Email *
                       </label>
                       <input
@@ -171,14 +174,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                        className="w-full px-4 py-3 border border-public-border rounded-xl bg-public-bg/50 text-public-text placeholder-public-text/50 focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
                         required
                       />
                     </div>
                   </div>
                   
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="company" className="block text-sm font-medium text-public-text/80 mb-2">
                       Company
                     </label>
                     <input
@@ -187,12 +190,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 border border-public-border rounded-xl bg-public-bg/50 text-public-text placeholder-public-text/50 focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-public-text/80 mb-2">
                       Message *
                     </label>
                     <textarea
@@ -201,8 +204,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                       rows={6}
                       value={formData.message}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
-                      placeholder="Tell us about your project or ask any questions..."
+                      className="w-full px-4 py-3 border border-public-border rounded-xl bg-public-bg/50 text-public-text placeholder-public-text/50 focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all resize-none"
+                      placeholder="Tell us about your startup and how we can help..."
                       required
                     />
                   </div>
@@ -210,7 +213,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center space-x-2 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full flex items-center justify-center space-x-2 py-3 bg-gradient-electric text-white rounded-xl font-semibold hover:shadow-neon-blue transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105"
                   >
                     {isSubmitting ? (
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -227,33 +230,33 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
 
             {/* FAQ Section */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-2xl font-bold text-public-text mb-6">
                 Frequently Asked Questions
               </h2>
               
               <div className="space-y-4">
                 {faqs.map((faq, index) => (
-                  <div key={index} className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                  <div key={index} className="bg-gradient-to-br from-public-border/50 to-transparent border border-public-border rounded-xl p-6 hover:shadow-neon-blue transition-all duration-300">
+                    <h3 className="text-lg font-semibold text-public-text mb-3">
                       {faq.question}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-public-text/70">
                       {faq.answer}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-8 bg-primary-50 dark:bg-primary-900/20 rounded-xl p-6 border border-primary-200 dark:border-primary-800">
+              <div className="mt-8 bg-electric-blue/10 border border-electric-blue/30 rounded-xl p-6">
                 <div className="flex items-center space-x-3 mb-3">
-                  <Clock className="w-5 h-5 text-primary-600 dark:text-primary-400" />
-                  <h3 className="text-lg font-semibold text-primary-800 dark:text-primary-200">
+                  <Clock className="w-5 h-5 text-electric-blue" />
+                  <h3 className="text-lg font-semibold text-electric-blue">
                     Response Time
                   </h3>
                 </div>
-                <p className="text-primary-700 dark:text-primary-300">
-                  We typically respond to all inquiries within 24 hours during business days. 
-                  For urgent matters, please call us directly.
+                <p className="text-public-text/70">
+                  We typically respond to all inquiries within 24 hours. 
+                  For urgent matters, reach out via our live chat.
                 </p>
               </div>
             </div>
