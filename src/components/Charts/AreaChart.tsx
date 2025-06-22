@@ -9,13 +9,13 @@ interface AreaChartProps {
 
 export const CustomAreaChart: React.FC<AreaChartProps> = ({ 
   data, 
-  color = '#3A9FFF',
+  color = 'var(--accent)',
   title 
 }) => {
   return (
-    <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:shadow-card-hover transition-all duration-200">
+    <div className="chart-box">
       {title && (
-        <h3 className="text-lg font-semibold text-dashboard-text mb-6">{title}</h3>
+        <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-6">{title}</h3>
       )}
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={data}>
@@ -27,27 +27,27 @@ export const CustomAreaChart: React.FC<AreaChartProps> = ({
           </defs>
           <CartesianGrid 
             strokeDasharray="3 3" 
-            stroke="#475569" 
+            stroke="var(--border)" 
           />
           <XAxis 
             dataKey="name" 
-            stroke="#94A3B8"
+            stroke="var(--text-muted)"
             fontSize={12}
             axisLine={false}
             tickLine={false}
           />
           <YAxis 
-            stroke="#94A3B8"
+            stroke="var(--text-muted)"
             fontSize={12}
             axisLine={false}
             tickLine={false}
           />
           <Tooltip 
             contentStyle={{
-              backgroundColor: '#1e293b',
-              border: '1px solid #475569',
+              backgroundColor: 'var(--bg-card)',
+              border: '1px solid var(--border)',
               borderRadius: '8px',
-              color: '#F8FAFC',
+              color: 'var(--text-primary)',
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
             }}
           />
@@ -57,7 +57,7 @@ export const CustomAreaChart: React.FC<AreaChartProps> = ({
             stroke={color}
             fill="url(#colorGradient)"
             strokeWidth={2}
-            filter="drop-shadow(0 0 8px rgba(58, 159, 255, 0.6))"
+            filter={`drop-shadow(0 0 8px ${color}66)`}
           />
         </AreaChart>
       </ResponsiveContainer>

@@ -43,28 +43,28 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onPageChange }) =
   };
 
   return (
-    <div className={`${isCollapsed ? 'w-16' : 'w-70'} bg-slate-900 border-r border-slate-700 transition-all duration-300 flex flex-col md:w-[280px] w-16`} style={{ width: isCollapsed ? '64px' : undefined }}>
+    <div className={`${isCollapsed ? 'w-16' : 'w-70'} bg-[var(--bg-card)] border-r border-[var(--border)] transition-all duration-300 flex flex-col md:w-[280px] w-16`} style={{ width: isCollapsed ? '64px' : undefined }}>
       {/* Header */}
-      <div className="p-6 border-b border-slate-700">
+      <div className="p-6 border-b border-[var(--border)]">
         <div className="flex items-center justify-between">
           {/* Hide logo/brand on mobile, show only icon */}
           <div className="md:flex hidden items-center space-x-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-dashboard flex items-center justify-center shadow-neon-blue">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-[var(--accent)] to-[var(--accent-hover)] flex items-center justify-center shadow-lg">
               <img src="/YOvA (3).png" alt="Forzio Logo" className="w-8 h-8 object-contain" />
             </div>
             <div>
-              <h1 className="text-lg font-bold bg-gradient-dashboard bg-clip-text text-transparent">Forzio</h1>
-              <p className="text-xs text-dashboard-secondary">Your AI Co-founder</p>
+              <h1 className="text-lg font-bold text-[var(--text-primary)]">Forzio</h1>
+              <p className="text-xs text-[var(--text-muted)]">Your AI Co-founder</p>
             </div>
           </div>
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="p-1 rounded-lg hover:bg-slate-800 transition-colors md:block hidden"
+            className="p-1 rounded-lg hover:bg-[var(--highlight)] transition-colors md:block hidden"
           >
             {isCollapsed ? (
-              <ChevronRight className="w-4 h-4 text-dashboard-secondary" />
+              <ChevronRight className="w-4 h-4 text-[var(--text-muted)]" />
             ) : (
-              <ChevronLeft className="w-4 h-4 text-dashboard-secondary" />
+              <ChevronLeft className="w-4 h-4 text-[var(--text-muted)]" />
             )}
           </button>
         </div>
@@ -82,11 +82,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onPageChange }) =
                   onClick={() => onPageChange(item.id)}
                   className={`w-full flex items-center justify-center md:justify-start px-0 md:px-4 py-3 text-left rounded-lg transition-all duration-200 group ${
                     isActive
-                      ? 'bg-gradient-dashboard text-white shadow-neon-blue'
-                      : 'text-dashboard-secondary hover:bg-slate-800 hover:text-dashboard-text'
+                      ? 'bg-[var(--accent)] text-white shadow-lg'
+                      : 'text-[var(--text-muted)] hover:bg-[var(--highlight)] hover:text-[var(--text-primary)]'
                   }`}
                 >
-                  <Icon className={`w-6 h-6 ${isActive ? 'text-white' : 'text-dashboard-secondary group-hover:text-dashboard-text'}`} />
+                  <Icon className={`w-6 h-6 ${isActive ? 'text-white' : 'text-[var(--text-muted)] group-hover:text-[var(--text-primary)]'}`} />
                   {/* Hide label on mobile, show on md+ */}
                   <span className="hidden md:inline ml-3 text-sm font-medium">{item.label}</span>
                 </button>
@@ -98,26 +98,26 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onPageChange }) =
 
       {/* Footer */}
       {user && (
-        <div className="p-2 md:p-6 border-t border-slate-700">
+        <div className="p-2 md:p-6 border-t border-[var(--border)]">
           <div className="flex items-center justify-center md:justify-between">
             <div className="hidden md:flex items-center space-x-3 flex-1 min-w-0">
-              <div className="w-8 h-8 bg-gradient-dashboard rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-hover)] rounded-full flex items-center justify-center">
                 <span className="text-sm font-medium text-white">
                   {user.name.charAt(0).toUpperCase()}
                 </span>
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-dashboard-text truncate">
+                <p className="text-sm font-medium text-[var(--text-primary)] truncate">
                   {user.name}
                 </p>
-                <p className="text-xs text-dashboard-secondary truncate">
+                <p className="text-xs text-[var(--text-muted)] truncate">
                   {user.email}
                 </p>
               </div>
             </div>
             <button
               onClick={handleLogout}
-              className="p-1 text-dashboard-secondary hover:text-dashboard-text hover:bg-slate-800 rounded-lg transition-colors"
+              className="p-1 text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--highlight)] rounded-lg transition-colors"
               title="Sign out"
             >
               <LogOut className="w-4 h-4" />

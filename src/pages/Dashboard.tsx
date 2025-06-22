@@ -122,7 +122,7 @@ export const Dashboard: React.FC = () => {
               change="+23% from yesterday"
               changeType="positive"
               icon={DollarSign}
-              iconColor="text-emerald-green"
+              iconColor="text-[var(--success)]"
             />
             <MetricCard
               title="Active Leads"
@@ -130,7 +130,7 @@ export const Dashboard: React.FC = () => {
               change="+12 new today"
               changeType="positive"
               icon={Users}
-              iconColor="text-electric-blue"
+              iconColor="text-[var(--accent)]"
             />
             <MetricCard
               title="Tasks Due"
@@ -138,7 +138,7 @@ export const Dashboard: React.FC = () => {
               change="5 high priority"
               changeType="neutral"
               icon={CheckSquare}
-              iconColor="text-violet-indigo"
+              iconColor="text-[var(--accent-hover)]"
             />
           </div>
 
