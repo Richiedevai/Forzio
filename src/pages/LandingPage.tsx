@@ -139,7 +139,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
               </span> for Every Entrepreneur's Struggle.
             </h1>
             <p className="text-xl hero-subtitle mb-8 max-w-3xl mx-auto leading-relaxed backdrop-blur-md bg-[var(--bg-card)]/5 rounded-xl p-4 shadow-lg">
-              Let Forzio run your operations, automate your growth, and generate insights — 
+              Let Forzio run your operations, automate your growth, and generate insights
               so you can scale faster and stress less.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
