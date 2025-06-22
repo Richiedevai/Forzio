@@ -1,0 +1,16 @@
+# SPA Redirect — send all requests to index.html
+/*                   /index.html   200
+
+# Specific Custom Redirects
+/home                /
+/dashboard           /Dashboard
+/settings            /Settings
+/reports             /Reports
+/about              /AboutPage
+/contact            /ContactPage
+
+# Example External Redirect
+/cuties              https://www.petsofnetlify.com
+
+# Example with encoded URI
+/authors/c%C3%A9line /authors/about-c%C3%A9line
