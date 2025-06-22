@@ -5,15 +5,28 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'inter': ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
       },
       colors: {
         // Forzio Public Website Colors (Futuristic Founder Flow)
-        'public-bg': '#0B0D10',
-        'public-text': '#FFFFFF',
-        'electric-blue': '#3A9FFF',
-        'violet-indigo': '#7A7AFF',
-        'public-border': '#1C1F26',
+        'public-bg': {
+          DEFAULT: '#F8FAFC',
+          dark: '#181A20',
+        },
+        'public-card': {
+          DEFAULT: '#FFFFFF',
+          dark: '#23262F',
+        },
+        'public-border': {
+          DEFAULT: '#E5E7EB',
+          dark: '#2A2D3A',
+        },
+        'public-text': {
+          DEFAULT: '#111827',
+          dark: '#FFFFFF',
+        },
+        'electric-blue': '#2563EB',
+        'electric-purple': '#A259FF',
         
         // Forzio Dashboard Colors (Neo AI Pro)
         'dashboard-bg': '#0F172A',
@@ -90,7 +103,7 @@ export default {
         },
       },
       boxShadow: {
-        'neon-blue': '0 0 20px rgba(58, 159, 255, 0.5)',
+        'neon-blue': '0 4px 24px 0 rgba(37,99,235,0.15)',
         'neon-violet': '0 0 20px rgba(122, 122, 255, 0.5)',
         'card-hover': '0 8px 32px rgba(0, 0, 0, 0.3)',
         'glow-intense': '0 0 30px rgba(58, 159, 255, 0.8)',
@@ -98,6 +111,9 @@ export default {
       backgroundImage: {
         'gradient-electric': 'linear-gradient(135deg, #3A9FFF 0%, #7A7AFF 100%)',
         'gradient-dashboard': 'linear-gradient(135deg, #3A9FFF 0%, #A855F7 100%)',
+      },
+      backdropBlur: {
+        xs: '2px',
       },
     },
   },

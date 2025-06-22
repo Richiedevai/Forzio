@@ -12,7 +12,7 @@ interface User {
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) => Promise<boolean>;
-  signup: (email: string, password: string, name: string) => Promise<boolean>;
+  signup: (email: string, password: string, name: string, role: string, companySize: string, revenue: string, target: string, goals: string, vision: string) => Promise<boolean>;
   logout: () => Promise<void>;
   isLoading: boolean;
 }
@@ -82,34 +82,37 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const signup = async (email: string, password: string, name: string): Promise<boolean> => {
+  const signup = async (email: string, password: string, name: string, role: string, companySize: string, revenue: string, target: string, goals: string, vision: string): Promise<boolean> => {
     setIsLoading(true);
-    
     try {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: {
-          data: {
-            name: name,
-          },
-        },
+        options: { data: { name } }
       });
-
       if (error) {
-        console.error('Signup error:', error.message);
         setIsLoading(false);
         return false;
       }
-
       if (data.user) {
         setUser(mapSupabaseUser(data.user));
+        // Save extra profile details to Supabase
+        await supabase.from('profiles').insert([
+          {
+            user_id: data.user.id,
+            name,
+            role,
+            company_size: companySize,
+            revenue,
+            target,
+            goals,
+            vision
+          }
+        ]);
       }
-      
       setIsLoading(false);
       return true;
     } catch (error) {
-      console.error('Signup error:', error);
       setIsLoading(false);
       return false;
     }

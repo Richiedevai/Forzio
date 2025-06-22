@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Navbar } from '../components/Layout/Navbar';
 import { Footer } from '../components/Layout/Footer';
 import { Mail, Phone, MapPin, Send, MessageSquare, Clock, Brain } from 'lucide-react';
+import type { Page } from '../App';
 
 interface ContactPageProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: Page) => void;
 }
 
 export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {

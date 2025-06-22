@@ -3,9 +3,10 @@ import { Navbar } from '../components/Layout/Navbar';
 import { useAuth } from '../contexts/AuthContext';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Brain } from 'lucide-react';
 import { useToast } from '../hooks/useToast';
+import type { Page } from '../App';
 
 interface AuthPageProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: Page) => void;
 }
 
 export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate }) => {
@@ -14,7 +15,13 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    name: ''
+    name: '',
+    role: '',
+    companySize: '',
+    revenue: '',
+    target: '',
+    goals: '',
+    vision: ''
   });
   const [error, setError] = useState('');
 
@@ -50,7 +57,17 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate }) => {
           setError('Invalid email or password. Please try again.');
         }
       } else {
-        success = await signup(formData.email, formData.password, formData.name);
+        success = await signup(
+          formData.email,
+          formData.password,
+          formData.name,
+          formData.role,
+          formData.companySize,
+          formData.revenue,
+          formData.target,
+          formData.goals,
+          formData.vision
+        );
         if (success) {
           addToast({
             message: 'Welcome to Forzio! Your AI co-founder is being set up.',
@@ -67,7 +84,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate }) => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -99,24 +116,110 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate }) => {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {!isLogin && (
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-public-text/80 mb-2">
-                    Full Name
-                  </label>
-                  <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-public-text/60 w-5 h-5" />
+                <>
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-public-text/80 mb-2">
+                      Full Name
+                    </label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-public-text/60 w-5 h-5" />
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        className="w-full pl-10 pr-4 py-3 border border-public-border rounded-xl bg-public-bg/50 text-public-text placeholder-public-text/50 focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
+                        placeholder="Enter your full name"
+                        required={!isLogin}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="role" className="block text-sm font-medium text-public-text/80 mb-2">
+                      Role
+                    </label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
+                      id="role"
+                      name="role"
+                      value={formData.role}
                       onChange={handleInputChange}
-                      className="w-full pl-10 pr-4 py-3 border border-public-border rounded-xl bg-public-bg/50 text-public-text placeholder-public-text/50 focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
-                      placeholder="Enter your full name"
-                      required={!isLogin}
+                      className="w-full px-4 py-3 border border-public-border rounded-xl bg-public-bg/50 text-public-text placeholder-public-text/50 focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
+                      placeholder="e.g. Founder, CEO, CTO"
                     />
                   </div>
-                </div>
+                  <div>
+                    <label htmlFor="companySize" className="block text-sm font-medium text-public-text/80 mb-2">
+                      Company Size
+                    </label>
+                    <input
+                      type="text"
+                      id="companySize"
+                      name="companySize"
+                      value={formData.companySize}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-public-border rounded-xl bg-public-bg/50 text-public-text placeholder-public-text/50 focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
+                      placeholder="e.g. 1-10, 11-50, 51-200"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="revenue" className="block text-sm font-medium text-public-text/80 mb-2">
+                      Revenue
+                    </label>
+                    <input
+                      type="text"
+                      id="revenue"
+                      name="revenue"
+                      value={formData.revenue}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-public-border rounded-xl bg-public-bg/50 text-public-text placeholder-public-text/50 focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
+                      placeholder="e.g. $0, $10k, $100k+"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="target" className="block text-sm font-medium text-public-text/80 mb-2">
+                      Target
+                    </label>
+                    <input
+                      type="text"
+                      id="target"
+                      name="target"
+                      value={formData.target}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-public-border rounded-xl bg-public-bg/50 text-public-text placeholder-public-text/50 focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
+                      placeholder="e.g. ARR, users, growth"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="goals" className="block text-sm font-medium text-public-text/80 mb-2">
+                      Goals
+                    </label>
+                    <input
+                      type="text"
+                      id="goals"
+                      name="goals"
+                      value={formData.goals}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-public-border rounded-xl bg-public-bg/50 text-public-text placeholder-public-text/50 focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
+                      placeholder="e.g. Launch MVP, raise funding"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="vision" className="block text-sm font-medium text-public-text/80 mb-2">
+                      Vision
+                    </label>
+                    <input
+                      type="text"
+                      id="vision"
+                      name="vision"
+                      value={formData.vision}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-public-border rounded-xl bg-public-bg/50 text-public-text placeholder-public-text/50 focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
+                      placeholder="e.g. Change the world with AI"
+                    />
+                  </div>
+                </>
               )}
 
               <div>
@@ -199,7 +302,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate }) => {
                   onClick={() => {
                     setIsLogin(!isLogin);
                     setError('');
-                    setFormData({ email: '', password: '', name: '' });
+                    setFormData({ email: '', password: '', name: '', role: '', companySize: '', revenue: '', target: '', goals: '', vision: '' });
                   }}
                   className="ml-1 text-electric-blue hover:text-violet-indigo font-medium"
                 >

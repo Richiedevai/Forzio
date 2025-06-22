@@ -43,24 +43,23 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onPageChange }) =
   };
 
   return (
-    <div className={`${isCollapsed ? 'w-16' : 'w-70'} bg-slate-900 border-r border-slate-700 transition-all duration-300 flex flex-col`} style={{ width: isCollapsed ? '64px' : '280px' }}>
+    <div className={`${isCollapsed ? 'w-16' : 'w-70'} bg-slate-900 border-r border-slate-700 transition-all duration-300 flex flex-col md:w-[280px] w-16`} style={{ width: isCollapsed ? '64px' : undefined }}>
       {/* Header */}
       <div className="p-6 border-b border-slate-700">
         <div className="flex items-center justify-between">
-          {!isCollapsed && (
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-dashboard flex items-center justify-center shadow-neon-blue">
-                <Brain className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-lg font-bold bg-gradient-dashboard bg-clip-text text-transparent">Forzio</h1>
-                <p className="text-xs text-dashboard-secondary">Your AI Co-founder</p>
-              </div>
+          {/* Hide logo/brand on mobile, show only icon */}
+          <div className="md:flex hidden items-center space-x-3">
+            <div className="w-10 h-10 rounded-lg bg-gradient-dashboard flex items-center justify-center shadow-neon-blue">
+              <img src="/YOvA (3).png" alt="Forzio Logo" className="w-8 h-8 object-contain" />
             </div>
-          )}
+            <div>
+              <h1 className="text-lg font-bold bg-gradient-dashboard bg-clip-text text-transparent">Forzio</h1>
+              <p className="text-xs text-dashboard-secondary">Your AI Co-founder</p>
+            </div>
+          </div>
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="p-1 rounded-lg hover:bg-slate-800 transition-colors"
+            className="p-1 rounded-lg hover:bg-slate-800 transition-colors md:block hidden"
           >
             {isCollapsed ? (
               <ChevronRight className="w-4 h-4 text-dashboard-secondary" />
@@ -72,26 +71,24 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onPageChange }) =
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-6">
+      <nav className="flex-1 p-2 md:p-6">
         <ul className="space-y-2">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentPage === item.id;
-            
             return (
               <li key={item.id}>
                 <button
                   onClick={() => onPageChange(item.id)}
-                  className={`w-full flex items-center ${isCollapsed ? 'justify-center px-2' : 'px-4'} py-3 text-left rounded-lg transition-all duration-200 group ${
+                  className={`w-full flex items-center justify-center md:justify-start px-0 md:px-4 py-3 text-left rounded-lg transition-all duration-200 group ${
                     isActive
                       ? 'bg-gradient-dashboard text-white shadow-neon-blue'
                       : 'text-dashboard-secondary hover:bg-slate-800 hover:text-dashboard-text'
                   }`}
                 >
-                  <Icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-dashboard-secondary group-hover:text-dashboard-text'}`} />
-                  {!isCollapsed && (
-                    <span className="ml-3 text-sm font-medium">{item.label}</span>
-                  )}
+                  <Icon className={`w-6 h-6 ${isActive ? 'text-white' : 'text-dashboard-secondary group-hover:text-dashboard-text'}`} />
+                  {/* Hide label on mobile, show on md+ */}
+                  <span className="hidden md:inline ml-3 text-sm font-medium">{item.label}</span>
                 </button>
               </li>
             );
@@ -100,10 +97,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onPageChange }) =
       </nav>
 
       {/* Footer */}
-      {!isCollapsed && user && (
-        <div className="p-6 border-t border-slate-700">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3 flex-1 min-w-0">
+      {user && (
+        <div className="p-2 md:p-6 border-t border-slate-700">
+          <div className="flex items-center justify-center md:justify-between">
+            <div className="hidden md:flex items-center space-x-3 flex-1 min-w-0">
               <div className="w-8 h-8 bg-gradient-dashboard rounded-full flex items-center justify-center">
                 <span className="text-sm font-medium text-white">
                   {user.name.charAt(0).toUpperCase()}

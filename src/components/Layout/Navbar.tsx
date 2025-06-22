@@ -1,10 +1,11 @@
 import React from 'react';
-import { Menu, X, Moon, Sun, LogOut } from 'lucide-react';
+import { Menu, X, Moon, Sun, LogOut, BarChart } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useAuth } from '../../contexts/AuthContext';
+import type { Page } from '../../App';
 
 interface NavbarProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: Page) => void;
   currentPage?: string;
 }
 
@@ -27,31 +28,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-public-bg/80 backdrop-blur-md border-b border-public-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div 
-            className="flex items-center space-x-3 cursor-pointer group"
-            onClick={() => onNavigate('landing')}
-          >
-            <div className="w-10 h-10 rounded-lg overflow-hidden bg-gradient-electric flex items-center justify-center group-hover:shadow-neon-blue transition-all duration-200">
-              <img 
-                src="/YOvA (3).gif" 
-                alt="Forzio Logo" 
-                className="w-8 h-8 object-contain"
-              />
-            </div>
+        <div className="flex items-center justify-between h-16 w-full">
+          {/* Left: Logo */}
+          <div className="flex items-center space-x-3 cursor-pointer group flex-shrink-0" onClick={() => onNavigate('landing')}>
+            <img 
+              src="/YOvA.png" 
+              alt="Forzio Logo" 
+              className="w-8 h-8 object-contain"
+            />
             <div>
               <h1 className="text-xl font-bold bg-gradient-electric bg-clip-text text-transparent">Forzio</h1>
               <p className="text-xs text-public-text/60">Your AI Co-founder</p>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Center: Navigation */}
+          <div className="hidden md:flex flex-1 justify-center items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => onNavigate(item.id)}
+                onClick={() => onNavigate(item.id as Page)}
                 className={`text-sm font-medium transition-colors hover:text-electric-blue ${
                   currentPage === item.id
                     ? 'text-electric-blue'
@@ -63,15 +59,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
             ))}
           </div>
 
-          {/* Actions */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Right: Actions */}
+          <div className="hidden md:flex items-center space-x-4 flex-shrink-0">
             <button
               onClick={toggleTheme}
               className="p-2 text-public-text/60 hover:text-public-text hover:bg-public-border/50 rounded-lg transition-all"
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
-            
             {user ? (
               <div className="flex items-center space-x-3">
                 <div className="flex items-center space-x-2">
@@ -84,14 +79,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                     {user.name}
                   </span>
                 </div>
-                
                 <button
                   onClick={() => onNavigate('dashboard')}
-                  className="px-4 py-2 text-sm font-medium bg-gradient-electric text-white rounded-lg hover:shadow-neon-blue transition-all duration-200 hover:scale-105"
+                  className="px-4 py-2 text-sm font-medium bg-gradient-electric text-white rounded-lg hover:shadow-neon-blue transition-all duration-200 hover:scale-105 flex items-center space-x-2"
                 >
-                  Dashboard
+                  <BarChart className="w-4 h-4" />
+                  <span>Dashboard</span>
                 </button>
-                
                 <button
                   onClick={handleLogout}
                   className="p-2 text-public-text/60 hover:text-public-text hover:bg-public-border/50 rounded-lg transition-all"
@@ -108,7 +102,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                 >
                   Sign In
                 </button>
-                
                 <button
                   onClick={() => onNavigate('auth')}
                   className="px-4 py-2 text-sm font-medium bg-gradient-electric text-white rounded-lg hover:shadow-neon-blue transition-all duration-200 hover:scale-105"
@@ -145,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                 <button
                   key={item.id}
                   onClick={() => {
-                    onNavigate(item.id);
+                    onNavigate(item.id as Page);
                     setIsMenuOpen(false);
                   }}
                   className={`text-left px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
@@ -177,9 +170,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                         onNavigate('dashboard');
                         setIsMenuOpen(false);
                       }}
-                      className="w-full text-left px-3 py-2 text-sm font-medium bg-gradient-electric text-white rounded-lg"
+                      className="w-full text-left px-3 py-2 text-sm font-medium bg-gradient-electric text-white rounded-lg flex items-center space-x-2"
                     >
-                      Dashboard
+                      <BarChart className="w-4 h-4" />
+                      <span>Dashboard</span>
                     </button>
                     
                     <button

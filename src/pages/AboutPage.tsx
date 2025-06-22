@@ -2,9 +2,10 @@ import React from 'react';
 import { Navbar } from '../components/Layout/Navbar';
 import { Footer } from '../components/Layout/Footer';
 import { Target, Users, Lightbulb, Award, Brain, Rocket, Zap } from 'lucide-react';
+import type { Page } from '../App';
 
 interface AboutPageProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: Page) => void;
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {

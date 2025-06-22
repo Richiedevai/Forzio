@@ -1,8 +1,9 @@
 import React from 'react';
 import { Twitter, Linkedin, Github, Mail, Brain } from 'lucide-react';
+import type { Page } from '../../App';
 
 interface FooterProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: Page) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
@@ -47,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-3">
               <li>
                 <button 
-                  onClick={() => onNavigate('dashboard')}
+                  onClick={() => onNavigate('dashboard' as Page)}
                   className="text-sm text-public-text/70 hover:text-electric-blue transition-colors"
                 >
                   Dashboard
@@ -77,7 +78,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-3">
               <li>
                 <button 
-                  onClick={() => onNavigate('about')}
+                  onClick={() => onNavigate('about' as Page)}
                   className="text-sm text-public-text/70 hover:text-electric-blue transition-colors"
                 >
                   About
@@ -85,7 +86,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <button 
-                  onClick={() => onNavigate('contact')}
+                  onClick={() => onNavigate('contact' as Page)}
                   className="text-sm text-public-text/70 hover:text-electric-blue transition-colors"
                 >
                   Contact

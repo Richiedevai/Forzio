@@ -9,7 +9,7 @@ import { DashboardApp } from './components/Dashboard/DashboardApp';
 import { ToastContainer } from './components/UI/Toast';
 import { useToast } from './hooks/useToast';
 
-type Page = 'landing' | 'about' | 'auth' | 'contact' | 'dashboard';
+export type Page = 'landing' | 'about' | 'auth' | 'contact' | 'dashboard';
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState<Page>('landing');
@@ -70,6 +70,7 @@ function AppContent() {
 }
 
 function App() {
+  console.log("App is loading");
   return (
     <ThemeProvider>
       <AuthProvider>
