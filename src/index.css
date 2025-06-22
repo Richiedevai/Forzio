@@ -49,7 +49,7 @@
 
 :root {
   --bg-main: #0d0d11;
-  --bg-card: #181824;
+  --bg-panel: #181824;
   --text-primary: #ffffff;
   --text-secondary: #cfcfe1;
   --text-muted: #888ca3;
@@ -63,7 +63,7 @@
 
 html[data-theme='dark'] {
   --bg-main: #0d0d11;
-  --bg-card: #181824;
+  --bg-panel: #181824;
   --text-primary: #ffffff;
   --text-secondary: #cfcfe1;
   --text-muted: #888ca3;
@@ -73,6 +73,20 @@ html[data-theme='dark'] {
   --success: #4ade80;
   --border: #2c2c3a;
   --highlight: #232336;
+}
+
+html[data-theme='light'] {
+  --bg-main: #f8f9fc;
+  --bg-panel: #ffffff;
+  --text-primary: #1c1e21;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --danger: #ef4444;
+  --success: #10b981;
+  --border: #e5e7eb;
+  --highlight: #9333ea;
 }
 
 .btn-primary {
@@ -87,7 +101,7 @@ html[data-theme='dark'] {
   background-color: var(--accent-hover);
 }
 .card {
-  background-color: var(--bg-card);
+  background-color: var(--bg-panel);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1rem;
