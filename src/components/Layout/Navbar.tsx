@@ -1,6 +1,5 @@
 import React from 'react';
-import { Menu, X, Moon, Sun, LogOut, BarChart } from 'lucide-react';
-import { useTheme } from '../../contexts/ThemeContext';
+import { Menu, X, LogOut, BarChart } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import type { Page } from '../../App';
 
@@ -10,7 +9,6 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landing' }) => {
-  const { theme, toggleTheme } = useTheme();
   const { user, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -61,12 +59,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
 
           {/* Right: Actions */}
           <div className="hidden md:flex items-center space-x-4 flex-shrink-0">
-            <button
-              onClick={toggleTheme}
-              className="p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--border)]/50 rounded-lg transition-all"
-            >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
             {user ? (
               <div className="flex items-center space-x-3">
                 <div className="flex items-center space-x-2">
@@ -115,13 +107,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
             <button
-              onClick={toggleTheme}
-              className="p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] rounded-lg"
-            >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-            
-            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] rounded-lg"
             >
@@ -150,7 +135,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                   {item.label}
                 </button>
               ))}
-              
+
               <div className="pt-3 border-t border-[var(--border)]">
                 {user ? (
                   <div className="space-y-2">
@@ -164,7 +149,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                         {user.name}
                       </span>
                     </div>
-                    
+
                     <button
                       onClick={() => {
                         onNavigate('dashboard');
@@ -175,7 +160,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                       <BarChart className="w-4 h-4" />
                       <span>Dashboard</span>
                     </button>
-                    
+
                     <button
                       onClick={() => {
                         handleLogout();
@@ -197,7 +182,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
                     >
                       Sign In
                     </button>
-                    
+
                     <button
                       onClick={() => {
                         onNavigate('auth');
