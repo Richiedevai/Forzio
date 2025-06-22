@@ -37,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage = 'landi
               className="w-8 h-8 object-contain"
             />
             <div>
-              <h1 className="text-xl font-bold text-[var(--text-primary)]">Forzio</h1>
+              <h1 className="text-xl font-bold text-black">Forzio</h1>
               <p className="text-xs text-[var(--text-muted)]">Your AI Co-founder</p>
             </div>
           </div>
