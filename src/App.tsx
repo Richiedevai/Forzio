@@ -34,7 +34,7 @@ function AppContent() {
   const renderPage = () => {
     if (isLoading) {
       return (
-        <div className="min-h-screen bg-light-bg dark:bg-dark-bg flex items-center justify-center w-full overflow-hidden">
+        <div className="min-h-screen bg-light-bg dark:bg-dark-bg flex items-center justify-center">
           <div className="text-center">
             <div className="w-8 h-8 border-2 border-primary-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-600 dark:text-gray-400">Loading...</p>
@@ -62,10 +62,8 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-light-bg dark:bg-dark-bg font-inter w-full overflow-x-hidden">
-      <div className="w-full max-w-full">
-        {renderPage()}
-      </div>
+    <div className="min-h-screen bg-light-bg dark:bg-dark-bg font-inter">
+      {renderPage()}
       <ToastContainer toasts={toasts} onClose={removeToast} />
     </div>
   );
