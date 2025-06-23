@@ -1,5 +1,5 @@
 import React from 'react';
-import { Twitter, Linkedin, Github, Mail, Brain } from 'lucide-react';
+import { Twitter, Linkedin, Github, Mail } from 'lucide-react';
 import type { Page } from '../../App';
 
 interface FooterProps {
@@ -14,8 +14,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 rounded-lg gradient-cta flex items-center justify-center shadow-lg">
-                <Brain className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 rounded-lg shadow-lg overflow-hidden flex items-center justify-center">
+                <img 
+                  src="/YOvA.png" // <-- your new logo here
+                  alt="Forzio Logo" 
+                  className="w-full h-full object-contain" 
+                />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-[var(--text-primary)]">Forzio</h1>
