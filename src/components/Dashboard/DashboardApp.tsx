@@ -32,12 +32,14 @@ export const DashboardApp: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen" style={{ background: 'var(--bg-main)' }}>
+    <div className="flex min-h-screen w-full overflow-hidden" style={{ background: 'var(--bg-main)' }}>
       <Sidebar currentPage={currentPage} onPageChange={setCurrentPage} />
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col min-w-0 w-full md:ml-0">
         <Header />
-        <main className="flex-1 overflow-x-hidden overflow-y-auto">
-          {renderPage()}
+        <main className="flex-1 overflow-x-hidden overflow-y-auto w-full">
+          <div className="w-full max-w-full">
+            {renderPage()}
+          </div>
         </main>
       </div>
     </div>
